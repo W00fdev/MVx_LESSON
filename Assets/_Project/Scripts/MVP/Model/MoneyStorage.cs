@@ -10,8 +10,7 @@ public class MoneyStorage
     public delegate void RemovedDelegate (int newValue, int range);
     public delegate void ChangedDelegate (int prevValue, int newValue);
     
-    [ShowInInspector]
-    private int _money;
+    [SerializeField] private int _money;
     
     public int Money => _money;
 
@@ -19,26 +18,17 @@ public class MoneyStorage
     public event RemovedDelegate OnMoneySpent;
     public event ChangedDelegate OnMoneyChanged;
 
-    //private readonly IObjectResolver _resolver;
-    //private EnemyConfig _config;
-    
     [Inject]
     public MoneyStorage(int money)
     {
         _money = money;
-        Debug.Log($"Injected with {money}");
+        Debug.Log($"Money injected with {money}");
     }
-    
-    /*public MoneyStorage(int money)
-    {
-        SetupMoney(money);
-        Debug.Log($"Injected ad created with: {money}");
-    }*/
 
     public void SetupMoney(int money)
         => _money = money;
     
-    [Button(ButtonSizes.Small, "Add Money")]
+    [Button( "Add Money")]
     public void AddMoney(int range)
     {
         _money += range;
@@ -60,4 +50,3 @@ public class MoneyStorage
         OnMoneyChanged?.Invoke(prevValue, _money);
     }
 }
-

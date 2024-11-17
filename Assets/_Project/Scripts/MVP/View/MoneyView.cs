@@ -5,6 +5,7 @@ using TriInspector;
 using UnityEngine;
 using VContainer;
 
+
 public class MoneyView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _moneyText;
@@ -13,23 +14,27 @@ public class MoneyView : MonoBehaviour
     [SerializeField] private Color _spentColor;
     [SerializeField] private float _animationDuration;
 
-    [Inject] private MoneyStorage _moneyStorage;
-    
+    private MoneyStorage _moneyStorage;
     private Coroutine _animation;
     
     private int _viewedCount;
     private int _actualCount;
     private bool _isEarning;
     
-    private void Start()
+    [Inject]
+    public void Construct(MoneyStorage moneyStorage)
     {
-        _moneyText.color = _defaultColor;
+        _moneyStorage = moneyStorage;
+    }
+
+    private void OnEnable()
+    {
         _moneyStorage.OnMoneyEarned += MoneyEarned;
         _moneyStorage.OnMoneySpent += MoneySpent;
         _moneyStorage.OnMoneyChanged += MoneyChanged;
 
-        _viewedCount = _moneyStorage.Money;
-        _moneyText.text = _moneyStorage.Money + "$";
+        ChangeText(_moneyStorage.Money);
+        _moneyText.color = _defaultColor;
     }
 
     private void OnDestroy()

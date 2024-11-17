@@ -8,5 +8,8 @@ namespace _Project.Scripts.MVP
     {
         [Inject] [ShowInInspector]
         private MoneyStorage _moneyStorage;
+        
+        [Inject] [ShowInInspector]
+        private RubyStorage _rubyStorage;
     }
 }
