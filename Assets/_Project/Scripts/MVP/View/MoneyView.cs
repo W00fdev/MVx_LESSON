@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using TMPro;
-using TriInspector;
 using UnityEngine;
 using VContainer;
-
 
 public class MoneyView : MonoBehaviour
 {
@@ -13,19 +10,13 @@ public class MoneyView : MonoBehaviour
     [SerializeField] private Color _earnedColor;
     [SerializeField] private Color _spentColor;
     [SerializeField] private float _animationDuration;
+    private int _actualCount;
+    private Coroutine _animation;
+    private bool _isEarning;
 
     private MoneyStorage _moneyStorage;
-    private Coroutine _animation;
-    
+
     private int _viewedCount;
-    private int _actualCount;
-    private bool _isEarning;
-    
-    [Inject]
-    public void Construct(MoneyStorage moneyStorage)
-    {
-        _moneyStorage = moneyStorage;
-    }
 
     private void OnEnable()
     {
@@ -42,6 +33,12 @@ public class MoneyView : MonoBehaviour
         _moneyStorage.OnMoneyEarned -= MoneyEarned;
         _moneyStorage.OnMoneySpent -= MoneySpent;
         _moneyStorage.OnMoneyChanged -= MoneyChanged;
+    }
+
+    [Inject]
+    public void Construct(MoneyStorage moneyStorage)
+    {
+        _moneyStorage = moneyStorage;
     }
 
     private void MoneyEarned(int newValue, int range)
@@ -73,11 +70,11 @@ public class MoneyView : MonoBehaviour
         _actualCount = newValue;
         _animation = StartCoroutine(ChangingMoney());
     }
-    
-    IEnumerator ChangingMoney()
+
+    private IEnumerator ChangingMoney()
     {
         float targetTime = _animationDuration;
-        float timer = 0f;
+        var timer = 0f;
         int prevCount = _viewedCount;
         while (_viewedCount != _actualCount && timer < targetTime)
         {
@@ -94,6 +91,6 @@ public class MoneyView : MonoBehaviour
     {
         _viewedCount = count;
         _moneyText.text = $"{count}$";
-        _moneyText.color = (_isEarning) ? _earnedColor : _spentColor;
+        _moneyText.color = _isEarning ? _earnedColor : _spentColor;
     }
 }

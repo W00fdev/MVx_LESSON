@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using VContainer;
 
 public class RubyView : MonoBehaviour
@@ -14,11 +13,11 @@ public class RubyView : MonoBehaviour
 
     private RubyStorage _rubyStorage;
     private Coroutine _animation;
-    
+
     private int _viewedCount;
     private int _actualCount;
     private bool _isEarning;
-    
+
     [Inject]
     public void Construct(RubyStorage moneyStorage)
     {
@@ -71,7 +70,7 @@ public class RubyView : MonoBehaviour
         _actualCount = newValue;
         _animation = StartCoroutine(ChangingRuby());
     }
-    
+
     IEnumerator ChangingRuby()
     {
         float targetTime = _animationDuration;
@@ -92,7 +91,7 @@ public class RubyView : MonoBehaviour
     private void ChangeText(int count)
     {
         _viewedCount = count;
-        _rubyText.text = $"{count}$";
+        _rubyText.text = $"{count}";
         _rubyText.color = (_isEarning) ? _earnedColor : _spentColor;
     }
 }
