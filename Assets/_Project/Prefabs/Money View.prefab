@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currencyText: {fileID: 4829467795812577252}
+  _iconImage: {fileID: 5586895820434087483}
   _defaultColor: {r: 0, g: 0, b: 0, a: 1}
   _earnedColor: {r: 0.09578204, g: 0.397, b: 0, a: 1}
   _spentColor: {r: 0.9150943, g: 0.082013145, b: 0.082013145, a: 1}

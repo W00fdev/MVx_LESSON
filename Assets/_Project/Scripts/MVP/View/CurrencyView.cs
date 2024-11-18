@@ -3,10 +3,12 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class CurrencyView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _currencyText;
+    [SerializeField] private Image _iconImage;
     [SerializeField] private Color _defaultColor;
     [SerializeField] private Color _earnedColor;
     [SerializeField] private Color _spentColor;
@@ -16,9 +18,10 @@ public class CurrencyView : MonoBehaviour
     private Coroutine _animation;
     private bool _isEarning;
 
-    public void SetupCurrency(int value, Func<int, string> format)
+    public void SetupCurrency(int value, Sprite icon, Func<int, string> format)
     {
         _format = format;
+        _iconImage.sprite = icon;
         _currencyText.text = _format?.Invoke(value);
         _currencyText.color = _defaultColor;
     }
