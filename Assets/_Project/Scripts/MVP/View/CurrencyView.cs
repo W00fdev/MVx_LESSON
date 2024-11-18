@@ -2,10 +2,11 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CurrencyView : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI _moneyText;
+    [SerializeField] private TextMeshProUGUI _currencyText;
     [SerializeField] private Color _defaultColor;
     [SerializeField] private Color _earnedColor;
     [SerializeField] private Color _spentColor;
@@ -18,8 +19,8 @@ public class CurrencyView : MonoBehaviour
     public void SetupCurrency(int value, Func<int, string> format)
     {
         _format = format;
-        _moneyText.text = _format?.Invoke(value);
-        _moneyText.color = _defaultColor;
+        _currencyText.text = _format?.Invoke(value);
+        _currencyText.color = _defaultColor;
     }
 
     public void EarnCurrency(int previous, int range)
@@ -58,7 +59,7 @@ public class CurrencyView : MonoBehaviour
         }
 
         ChangeText(startValue + range);
-        _moneyText.color = _defaultColor;
+        _currencyText.color = _defaultColor;
         _animation = null;
     }
 
@@ -70,7 +71,7 @@ public class CurrencyView : MonoBehaviour
 
     private void ChangeText(int count)
     {
-        _moneyText.text = _format?.Invoke(count);
-        _moneyText.color = _isEarning ? _earnedColor : _spentColor;
+        _currencyText.text = _format?.Invoke(count);
+        _currencyText.color = _isEarning ? _earnedColor : _spentColor;
     }
 }
