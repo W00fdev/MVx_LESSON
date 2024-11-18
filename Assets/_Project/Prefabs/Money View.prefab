@@ -254,8 +254,8 @@ GameObject:
   - component: {fileID: 7118797712820353895}
   - component: {fileID: 1402410350364332225}
   - component: {fileID: 3520627649135809358}
-  - component: {fileID: 4330505985018386789}
   - component: {fileID: 6221755313777261461}
+  - component: {fileID: 6369137984549271868}
   m_Layer: 5
   m_Name: Money View
   m_TagString: Untagged
@@ -321,23 +321,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &4330505985018386789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9006481465861160202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4beed797db7b454c9a19cdec2a0740b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moneyText: {fileID: 4829467795812577252}
-  _defaultColor: {r: 0, g: 0, b: 0, a: 1}
-  _earnedColor: {r: 0.09803922, g: 0.4, b: 0, a: 1}
-  _spentColor: {r: 0.4, g: 0, b: 0.02709961, a: 1}
-  _animationDuration: 1
 --- !u!114 &6221755313777261461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,3 +336,20 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.8}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &6369137984549271868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9006481465861160202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0745f801b0e742c4b391a8cd69cde723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moneyText: {fileID: 4829467795812577252}
+  _defaultColor: {r: 0, g: 0, b: 0, a: 1}
+  _earnedColor: {r: 0.09578204, g: 0.397, b: 0, a: 1}
+  _spentColor: {r: 0.9150943, g: 0.082013145, b: 0.082013145, a: 1}
+  _animationDuration: 1
