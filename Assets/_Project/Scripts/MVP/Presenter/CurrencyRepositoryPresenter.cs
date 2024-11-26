@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using _Project.Scripts.MVP.Model;
 using _Project.Scripts.MVP.View;
 using UnityEngine;
-using VContainer;
-using VContainer.Unity;
+using Zenject;
 
 namespace _Project.Scripts.MVP.Presenter
 {

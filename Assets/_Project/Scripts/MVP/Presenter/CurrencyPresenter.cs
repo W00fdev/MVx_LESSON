@@ -1,7 +1,5 @@
 ﻿using System;
 using _Project.Scripts.MVP.Model;
-using VContainer;
-using VContainer.Unity;
 
 namespace _Project.Scripts.MVP.Presenter
 {

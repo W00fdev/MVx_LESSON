@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d20500cc27b058c4abe6fb3ee5dd50b6, type: 3}
+  m_Name: ArchmageRingProduct
+  m_EditorClassIdentifier: 
+  _name: Archmage Ring
+  _description: Increases magic attack of the hero on 150K%
+  _iconSprite: {fileID: 21300000, guid: 6a36517895bb64b94b9c7033e4020457, type: 3}
+  _price:
+  - Type: 0
+    Amount: 100
+  - Type: 1
+    Amount: 50
+  - Type: 2
+    Amount: 15

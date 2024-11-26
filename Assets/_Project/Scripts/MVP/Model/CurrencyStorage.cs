@@ -1,7 +1,7 @@
 ﻿using System;
-using TriInspector;
+using Sirenix.OdinInspector;
 using UnityEngine;
-using VContainer;
+using Zenject;
 
 namespace _Project.Scripts.MVP.Model
 {
@@ -26,7 +26,8 @@ namespace _Project.Scripts.MVP.Model
         public event RemovedDelegate OnCurrencySpent;
         public event ChangedDelegate OnCurrencyChanged;
 
-        [Inject]
+        public event Action OnStateChanged;
+
         public CurrencyStorage(CurrencyType type, int currency)
         {
             _currency = currency;
@@ -42,6 +43,7 @@ namespace _Project.Scripts.MVP.Model
         {
             _currency += range;
             OnCurrencyEarned?.Invoke(_currency, range);
+            OnStateChanged?.Invoke();
         }
 
         [Button("Spend Currency")]
@@ -49,6 +51,7 @@ namespace _Project.Scripts.MVP.Model
         {
             _currency -= range;
             OnCurrencySpent?.Invoke(_currency, range);
+            OnStateChanged?.Invoke();
         }
 
         [Button("Change Currency")]
@@ -57,6 +60,7 @@ namespace _Project.Scripts.MVP.Model
             int prevValue = _currency;
             _currency += range;
             OnCurrencyChanged?.Invoke(prevValue, _currency);
+            OnStateChanged?.Invoke();
         }
     }
 }
