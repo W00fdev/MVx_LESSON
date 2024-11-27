@@ -64,5 +64,9 @@ namespace _Project.Scripts.MVP.Model
         {
             OnStateChanged?.Invoke();
         }
+
+        public void Add(CurrencyData[] currency)
+        {
+        }
     }
 }
