@@ -5,6 +5,7 @@ using Zenject;
 
 namespace _Project.Scripts.MVP.Model
 {
+    [Serializable]
     public class CurrencyRepository : IInitializable, IDisposable
     {
         private readonly Dictionary<CurrencyType, CurrencyStorage> _repository;
@@ -65,8 +66,14 @@ namespace _Project.Scripts.MVP.Model
             OnStateChanged?.Invoke();
         }
 
-        public void Add(CurrencyData[] currency)
+        public void Add(CurrencyData[] currencyData)
         {
+            for (var i = 0; i < currencyData.Length; i++)
+            {
+                CurrencyData currency = currencyData[i];
+                CurrencyStorage storage = GetStorage(currency.Type);
+                storage.AddCurrency(currency.Amount);
+            }
         }
     }
 }

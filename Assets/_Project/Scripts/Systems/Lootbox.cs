@@ -6,6 +6,7 @@ using Zenject;
 
 namespace _Project.Scripts.Systems
 {
+    [Serializable]
     public class Lootbox : IFixedTickable
     {
         public event Action<bool> OnReady;
